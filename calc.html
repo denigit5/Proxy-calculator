@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        overflow: hidden;
+    }
+    .text-3xl {
+        margin-left: 40%;
+        color: rgb(244, 248, 245);
+    }
+
+    .header-bg {
+        background-color: rgb(48, 47, 47);
+        height: 130px;
+        margin-top: -2rem;
+    }
+
+    nav ul {
+        display: flex;
+        margin-left: 70%;
+        gap: 4rem;
+    }
+
+    nav li a {
+        font-size: 18px;
+        color: rgb(242, 243, 245);
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .intro {
+        font-size: 34px;
+        font-weight: 500;
+        
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .calc-section {
+        width: 50%;
+        height: 370px;
+        margin-left: 40%;
+        margin-top: -22.5rem;
+        background-color: rgb(224, 219, 219);
+    }
+
+    input {
+        outline: none;
+    }
+
+    input[type="number"] {
+        padding-left: 1rem;
+    }
+
+    button {
+        border: none;
+        border-radius: 0.8rem;
+    }
+
+    @media (max-width: 1200) {
+        /* For mobile phones.. */
+        .calc-section {
+            margin-top: 20rem;
+        }
+    } 
+
+  </style>
+</head>
+<body class="bg-orange-50">
+    <div class="header-bg">
+        <h1 class="text-3xl font-bold pt-16">
+            Proxy Investments
+          </h1>
+    </div>
+    <nav class="bg-orange-400 h-8">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">services</a></li>
+            <li><a href="/">contact</a></li>
+        </ul>
+    </nav>
+    <h3 class="text-2xl mt-6">Proxy Calculator</h3>
+    <div class="intro w-96 ml-12 mt-14 text-orange-600">With Proxy Investments, enjoy a lucrative interest rate of 11% per annum, outperforming traditional investment avenues. Start with as little as Ksh 100.</div>
+    <section class="calc-section">
+        <div class="flex pt-16 pl-20">
+            <label for="deposit">Amount :</label>
+            <input class="h-10 w-72 ml-4" type="number" id="deposit">
+        </div>
+        <br>
+        <div class="mt-8 pl-20">
+            <label for="period">period of <br> investing :</label>
+            <input class="h-10 w-72" type="number" id="period">
+        </div>
+        <p class="text-orange-700 mt-10 ml-20" id="info">Fill in values to see how much you will earn.</p>
+        <button class="ml-52 mt-5 bg-orange-400 text-white p-1" onclick ="calculate()">Get return</button>
+    </section>
+
+    <script>
+        function calculate() {
+            var deposit = document.getElementById('deposit').value;
+            var period = document.getElementById('period').value;
+            var interestRate = 0.11;
+            var result = interestRate * deposit * period;
+            document.querySelector('#info'). innerHTML = `You will receive ${result} in profit  after your investment in ${period} years.`;
+            if (isNaN(deposit) || isNaN(period) || deposit <= 100 || period <= 0) {
+                alert("Please enter valid numbers");
+            }
+        }
+    </script>
+</body>
+</html>
